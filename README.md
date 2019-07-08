@@ -5,21 +5,25 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|text|null: false, foreign_key: true|
-|member_id|integer|null: false, foreign_key: true|
+|name|string|null: false|
+|email|string|null: false|
 
 ### Association
 - has_many : members
+- has_many : groups,  through: :members
+- has_many : posts
 
 ## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|name|text|null: false, foreign_key: true|
-|member_id|integer|null: false, foreign_key: true|
+|user_name|string|null: false|
+|user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :members
+- has_many :users, through: :members
+- has_many :posts
 
 ## membersテーブル
 
@@ -31,14 +35,16 @@
 ### Association
 - belongs_to :group
 - belongs_to :user
-- has_many :messages
 
-## messagesテーブル
+## postsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|text||
+|body|text|null:  false|
 |image|string||
-|member_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
 
 ### Association
-- belongs_to :member
+- belongs_to : user
+- belongs_to: group
