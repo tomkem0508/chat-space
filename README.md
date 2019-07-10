@@ -11,7 +11,7 @@
 ### Association
 - has_many : members
 - has_many : groups,  through: :members
-- has_many : posts
+- has_many : messages
 
 ## groupsテーブル
 
@@ -23,7 +23,7 @@
 ### Association
 - has_many :members
 - has_many :users, through: :members
-- has_many :posts
+- has_many :messages
 
 ## membersテーブル
 
@@ -36,7 +36,7 @@
 - belongs_to :group
 - belongs_to :user
 
-## postsテーブル
+## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |body|text|null:  false|
